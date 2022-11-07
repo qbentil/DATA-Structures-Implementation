@@ -14,6 +14,8 @@ class LinkedList {
     // Update the tail to the new node
     this.tail = newNode;
   }
+  // time complexity: O(n)
+  // space complexity: O(n)
 
   prepend(value) {
     const newNode = { value, next: null };
@@ -70,7 +72,7 @@ class LinkedList {
     return null;
   }
 
-  toArray() {
+  print() {
     const elements = [];
     let curNode = this.head;
     while (curNode) {
@@ -92,4 +94,4 @@ linkedList.remove("Bentil");
 
 linkedList.insertAfter("Minash", false);
 
-console.log(linkedList.toArray());
+console.log(linkedList.print());
