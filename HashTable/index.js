@@ -11,24 +11,29 @@ class HashTable {
   table = new Array(50);
   setItem = (key, val) => {
     const idx = hastStringToInt(key, this.table.length);
-    this.table[idx] = { key, val };
+
+    if (!this.table[idx]) {
+      this.table[idx] = [{ key, val }];
+    } else {
+      this.table[idx].push({ key, val });
+    }
   };
   getItem = (key) => {
     const idx = hastStringToInt(key, this.table.length);
-    return this.table[idx];
+    if (!this.table[idx]) return null;
+    console.log(this.table)
+    return this.table[idx].find((x) => x.key === key)
   };
 }
 
-
-
-
 // Test
 const myTable = new HashTable();
-myTable.setItem("firstName", "bob");
-myTable.setItem("lastName", "smith");
-myTable.setItem("age", 30);
-myTable.setItem("address", "123 main st");
-myTable.setItem("city", "new york");
-myTable.setItem("state", "ny");
+myTable.setItem("firstName", "qbentil");
+myTable.setItem("lastName", "shadow");
+myTable.setItem("age", 10);
+myTable.setItem("address", "Pokuase");
+myTable.setItem("city", "Accra");
+myTable.setItem("state", "Greater Accra");
 
 console.log(myTable.getItem("firstName"));
+console.log(myTable.getItem("lastname"));
