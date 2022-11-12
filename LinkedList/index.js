@@ -56,20 +56,30 @@ class LinkedList {
   }
 
   find(value) {
-    const elements = this.toArray();
-    return elements.find((element) => element.value === value);
+    const elements = this.print();
+    return elements.find((element) => element.value.toLowerCase() === value.toLowerCase());
   }
 
   insertAfter(value, afterValue) {
     const existingNode = this.find(afterValue);
-
-    // if the node doesn't exist, return null
     if (existingNode) {
       const newNode = { value, next: existingNode.next };
       existingNode.next = newNode;
+    }    
+  }
+
+  
+  insertAtTail(value) {
+    const newNode = { value, next: null };
+    if (!this.head) {
+      this.head = newNode;
     }
 
-    return null;
+    if (this.tail) {
+      this.tail.next = newNode;
+    }
+
+    this.tail = newNode;
   }
 
   print() {
@@ -85,13 +95,13 @@ class LinkedList {
 
 const linkedList = new LinkedList();
 linkedList.append("Bentil");
-linkedList.append(false);
 // prepend
 linkedList.prepend("John");
 
 // remove
 linkedList.remove("Bentil");
 
-linkedList.insertAfter("Minash", false);
+linkedList.insertBefore("Minash", "John");
+linkedList.insertAtTail("Bentil");
 
 console.log(linkedList.print());
