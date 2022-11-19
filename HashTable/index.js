@@ -47,16 +47,16 @@ class HashTable {
     }
     return keys;
   };
-  
-    values = () => {
+
+  values = () => {
     const values = [];
     for (let i = 0; i < this.table.length; i++) {
-        if (this.table[i]) {
-            values.push(this.table[i][0][1]);
-        }
+      if (this.table[i]) {
+        values.push(this.table[i][0][1]);
+      }
     }
     return values;
-    };
+  };
 }
 
 // Test
