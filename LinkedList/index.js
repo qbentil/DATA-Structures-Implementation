@@ -57,7 +57,9 @@ class LinkedList {
 
   find(value) {
     const elements = this.print();
-    return elements.find((element) => element.value.toLowerCase() === value.toLowerCase());
+    return elements.find(
+      (element) => element.value.toLowerCase() === value.toLowerCase()
+    );
   }
 
   insertAfter(value, afterValue) {
@@ -65,10 +67,9 @@ class LinkedList {
     if (existingNode) {
       const newNode = { value, next: existingNode.next };
       existingNode.next = newNode;
-    }    
+    }
   }
 
-  
   insertAtTail(value) {
     const newNode = { value, next: null };
     if (!this.head) {
