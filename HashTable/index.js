@@ -1,4 +1,4 @@
-const hastStringToInt = (string, tableSize) => {
+const castStringToInt = (string, tableSize) => {
   let hashkey = 20;
   for (let i = 0; i < string.length; i++) {
     hashkey = (hashkey * 31 + string.charCodeAt(i)) % tableSize;
@@ -10,7 +10,7 @@ const hastStringToInt = (string, tableSize) => {
 class HashTable {
   table = new Array(50);
   setItem = (key, val) => {
-    const idx = hastStringToInt(key, this.table.length);
+    const idx = castStringToInt(key, this.table.length);
 
     if (!this.table[idx]) {
       this.table[idx] = [[key, val]];
@@ -19,7 +19,7 @@ class HashTable {
     }
   };
   getItem = (key) => {
-    const idx = hastStringToInt(key, this.table.length);
+    const idx = castStringToInt(key, this.table.length);
     if (!this.table[idx]) return null;
     return this.table[idx].find((x) => x[0] === key)[1];
   };
@@ -33,7 +33,7 @@ class HashTable {
   };
 
   removeItem = (key) => {
-    const idx = hastStringToInt(key, this.table.length);
+    const idx = castStringToInt(key, this.table.length);
     if (!this.table[idx]) return null;
     delete this.table[idx];
   };
